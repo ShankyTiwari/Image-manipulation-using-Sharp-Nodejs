@@ -1,0 +1,34 @@
+<html>
+    <head>
+        <title>Scale, Crop and Resize in Nodejs using Sharp</title>
+        <meta charset="utf-8">
+        <base href="/">
+        <!-- Adding CSS files-->
+        <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.0/css/font-awesome.css" />
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" >
+        <link rel="stylesheet" href="css/style.css"> 
+    </head>
+    <!-- Defining angular controller -->
+    <body>
+        <header class="app-header">
+            <h2>Crop Images in Nodejs using Sharp</h2>
+        </header>
+        <div class="main">
+            <div class="left">
+                <h4>Original Image</h4>
+                <img class="original-image" src="/img/Jellyfish.jpg">
+            </div>
+            <div class="right">
+                <div class="mesure">
+                    <input type="number" class="form-control image-form-field" id="height" placeholder="height in PX">
+                    <input type="number" class="form-control image-form-field" id="width" placeholder="Width in PX">
+                    <button class="btn btn-default image-form-field" onclick="doCrop()">Crop</button>
+                </div>   
+                <div class="result">
+                    <img id="cropped-image">
+                </div>             
+            </div>
+        </div>
+    </body>
+    <script type="text/javascript" src="/js/crop.js"></script>
+</html>

@@ -1,0 +1,71 @@
+body{
+	overflow-x: hidden;
+}
+
+.app-header{
+	padding: 20px;
+    background: rgba(127, 255, 212, 0.27);
+    text-align: center;
+}
+
+.main{
+	padding-top: 50px;text-align: center;
+}
+
+.examples{
+	list-style-type: none;
+	width: 80%;
+	margin: auto;	
+
+}
+
+.examples li {
+	padding: 20px;
+    background: aliceblue;
+    margin-bottom: 10px;
+    font-size: 25px;
+}
+
+.examples li:hover {
+    background:  rgba(127, 255, 212, 0.27);
+}
+.examples li:hover > a{
+    color: #5a5a5a;
+}
+
+.app-footer{
+	position: absolute;
+    bottom: 0;
+    background: #000000;
+    width: 100%;
+    padding: 25px;
+    font-size: 15px;
+    color: #fff;
+}
+
+.app-footer a{
+    color: #fff;
+    text-decoration: underline;
+}
+/*---------------------------------- Common CSS starts -------------------------------------------------------*/
+.original-image{
+	width: 600px;
+	height: 400px;
+}
+
+
+.left{
+	float: left;
+	margin-left: 20px;
+}
+
+.right{
+	float: right;
+	margin-right: 20px;
+}
+
+.image-form-field{
+	width: 30%;
+    float: left;
+    margin-right: 10px;
+}
