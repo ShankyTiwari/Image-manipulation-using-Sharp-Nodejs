@@ -9,14 +9,16 @@ body{
 }
 
 .main{
-	padding-top: 50px;text-align: center;
+	padding-top: 50px;
+    text-align: center;
+    display: flex;
+    margin-left: 10%;
 }
 
 .examples{
 	list-style-type: none;
 	width: 80%;
-	margin: auto;	
-
+	margin: auto;
 }
 
 .examples li {
@@ -55,12 +57,10 @@ body{
 
 
 .left{
-	float: left;
-	margin-left: 20px;
+	margin-right: 20px;
 }
 
 .right{
-	float: right;
 	margin-right: 20px;
 }
 
