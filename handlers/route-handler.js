@@ -22,7 +22,7 @@ class Helper{
 				error : true,
 				filepath : CONSTANTS.INVALID_HEIGTH
 			});
-		} else if(width === '' || width === null || width === undefined) {
+		} else if(width === ''  || width === null || width === undefined) {
 			response.status(CONSTANTS.SERVER_OK_HTTP_CODE).json({
 				error : true,
 				filepath : CONSTANTS.INVALID_WIDTH
@@ -31,25 +31,24 @@ class Helper{
 			const imagePath = path.join(__dirname + '../../public/img/Jellyfish.jpg');
 			const outputImageName = 'cropped_output_' + height + '_' + width + '.jpg';
 			const outputImagePath = __dirname + '../../public/img/output/' + outputImageName;
-
-			try {
-				sharp(imagePath)
-					.resize(height, width)
-					.crop(sharp.strategy.entropy)
-					.toFile(outputImagePath)
-					.then( (ImageResult) => {
-						response.status(CONSTANTS.SERVER_OK_HTTP_CODE).json({
-							error : false,
-							filepath: outputImageName,
-							message: CONSTANTS.SUCCESSFUL_MESSAGE
-						});
+			
+			sharp(imagePath)
+				.resize(height, width)
+				.crop(sharp.strategy.entropy)
+				.toFile(outputImagePath)
+				.then( (ImageResult) => {
+					response.status(CONSTANTS.SERVER_OK_HTTP_CODE).json({
+						error : false,
+						filepath: outputImageName,
+						message: CONSTANTS.SUCCESSFUL_MESSAGE
 					});
-			} catch ( error ) {
-				response.status(CONSTANTS.SERVER_OK_HTTP_CODE).json({
-					error : true,
-					message : CONSTANTS.SERVER_ERROR_MESSAGE
+				})
+				.catch( () => {
+					response.status(CONSTANTS.SERVER_OK_HTTP_CODE).json({
+						error : true,
+						message : CONSTANTS.SERVER_ERROR_MESSAGE
+					});
 				});
-			}
 		}		
 	}
 
@@ -75,24 +74,24 @@ class Helper{
 			const outputImageName = 'scaled_output_' + height + '_' + width + '.jpg';
 			const outputImagePath = __dirname + '../../public/img/output/' + outputImageName;
 
-			try {
-				sharp(imagePath)
-					.resize(height, width) // Use resize otherwise it applies crop (From the Doc). 
-					.max()
-					.toFile(outputImagePath)
-					.then( (ImageResult) => {
-						response.status(CONSTANTS.SERVER_OK_HTTP_CODE).json({
-							error : false,
-							filepath: outputImageName,
-							message: CONSTANTS.SUCCESSFUL_MESSAGE
-						});
+			
+			sharp(imagePath)
+				.resize(height, width) // Use resize otherwise it applies crop (From the Doc). 
+				.max()
+				.toFile(outputImagePath)
+				.then( (ImageResult) => {
+					response.status(CONSTANTS.SERVER_OK_HTTP_CODE).json({
+						error : false,
+						filepath: outputImageName,
+						message: CONSTANTS.SUCCESSFUL_MESSAGE
 					});
-			} catch ( error ) {
-				response.status(CONSTANTS.SERVER_OK_HTTP_CODE).json({
-					error : true,
-					message : CONSTANTS.SERVER_ERROR_MESSAGE
+				})
+				.catch( () => {
+					response.status(CONSTANTS.SERVER_OK_HTTP_CODE).json({
+						error : true,
+						message : CONSTANTS.SERVER_ERROR_MESSAGE
+					});
 				});
-			}
 		}		
 	}
 
@@ -118,25 +117,24 @@ class Helper{
 			const outputImageName = 'resized_output_' + height + '_' + width + '.jpg';
 			const outputImagePath = __dirname + '../../public/img/output/' + outputImageName;
 
-			try {
-				sharp(imagePath)
-					.resize(height, width, {
-						kernel: sharp.kernel.nearest
-					})
-					.toFile(outputImagePath)
-					.then( (ImageResult) => {
-						response.status(CONSTANTS.SERVER_OK_HTTP_CODE).json({
-							error : false,
-							filepath: outputImageName,
-							message: CONSTANTS.SUCCESSFUL_MESSAGE
-						});
+			sharp(imagePath)
+				.resize(height, width, {
+					kernel: sharp.kernel.nearest
+				})
+				.toFile(outputImagePath)
+				.then( (ImageResult) => {
+					response.status(CONSTANTS.SERVER_OK_HTTP_CODE).json({
+						error : false,
+						filepath: outputImageName,
+						message: CONSTANTS.SUCCESSFUL_MESSAGE
 					});
-			} catch ( error ) {
-				response.status(CONSTANTS.SERVER_OK_HTTP_CODE).json({
-					error : true,
-					message : CONSTANTS.SERVER_ERROR_MESSAGE
+				})
+				.catch ( () => {
+					response.status(CONSTANTS.SERVER_OK_HTTP_CODE).json({
+						error : true,
+						message : CONSTANTS.SERVER_ERROR_MESSAGE
+					});
 				});
-			}
 		}
 	}
 
@@ -150,23 +148,21 @@ class Helper{
 		const outputImageName = 'png_output.png';
 		const outputImagePath = __dirname + '../../public/img/output/' + outputImageName;
 
-		try {
-			sharp(imagePath)
-				.png()
-				.toFile(outputImagePath, function(err, info) {
-					response.status(CONSTANTS.SERVER_OK_HTTP_CODE).json({
-						error : false,
-						filepath: outputImageName,
-						message: CONSTANTS.SUCCESSFUL_MESSAGE
-					});
+		sharp(imagePath)
+			.png()
+			.toFile(outputImagePath, function(err, info) {
+				response.status(CONSTANTS.SERVER_OK_HTTP_CODE).json({
+					error : false,
+					filepath: outputImageName,
+					message: CONSTANTS.SUCCESSFUL_MESSAGE
 				});
-
-		} catch ( error ) {
-			response.status(CONSTANTS.SERVER_OK_HTTP_CODE).json({
-				error : true,
-				message : CONSTANTS.SERVER_ERROR_MESSAGE
+			})
+			.catch ( () => {
+				response.status(CONSTANTS.SERVER_OK_HTTP_CODE).json({
+					error : true,
+					message : CONSTANTS.SERVER_ERROR_MESSAGE
+				});
 			});
-		}
 	}
 
 	routeNotFoundHandler(request, response){
